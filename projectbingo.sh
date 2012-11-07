@@ -49,7 +49,7 @@ exit;;
 esac
 }
 $clr
-dialog --title "WELCOME BOX" --msgbox "\n Welcome to Bingo Shell " 20 40
+kdialog --title "BINGO SHELL" --msgbox "Welcome to the amazing world of BINGO Interactive GUI shell \n " 
 kdialog --title "BINGO SHELL" --warningyesnocancel " \n Do you want to login ?"
 i=$?
 f=0
@@ -73,7 +73,8 @@ fi
 t;;
 *)
 $clr
-dialog --inputbox "Enter your name:" 8 40 2>answer
+kdialog --title "Input dialog" --inputbox "What name would you like to
+use" "default Name">answer
 f=1
 ;;
 esac
@@ -259,7 +260,9 @@ esac
 }
 syst
 ;;
-4)	$clr
+4)maingame()
+{
+	$clr
 	$sleep
 	echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell Game Page  !!!${exundl}     ${txtrst}"
 	echo ""
@@ -270,7 +273,10 @@ syst
 	echo ""
 	read c
 	case $c in
-		1) $clr
+		1)
+		game1()
+{	
+		 $clr
                 $sleep
                 echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to UNIX WONDERS  !!!${exundl}     ${txtrst}"
                 echo " "
@@ -291,41 +297,30 @@ syst
 				echo "${bold}                        ${undl}Use of ls${exundl}  "
 				echo "${txtblu} It lists the contents of directory ... Try it yourself${txtrst} "
 				read c
-				if [ $c=="ls" ]
-				then
+				case $c in 
+				ls)
+				echo "\n\n"
 				for i in `ls`
                			do
                				 echo $i
-                		done
-				else
-                               	{
-				echo "You have written it wrongly try again "
-                                game
-				}
-                                fi
+                		done;;
+				*)
+				echo "\n\n"
+                                echo "You have written it wrongly try again "
+                                $sleep
+				$sleep
+				game;;
+				esac	
+                            
 				$sleep
 				$sleep
 				$clr
 				echo "${txtylw} ${bold}WELL DONE ${txtrst}"
-				echo "${txtpur} ${rev}Now let us know about some options of ls${txtrst}"
-				echo "${txtblu} -a option : Reverses the order of how the files are displayed.
-				Try it yourself only option   ${txtrst}"
-				echo "ls"
-				read c
-				if [ $c=="-a" ]
-                                then
-                                for i in `ls -a`
-                                do
-                                         echo $i
-                                done
-				else 
-				{
-					echo "You have written it wrongly try again "
-					game
-				}
-				$clr
 				echo "${txtblu} Congratulations You have learnt ls command ${txtrst}"
-fi
+
+$sleep
+$sleep
+game1
 }
 game
 $sleep
@@ -341,35 +336,27 @@ exi;;
                                 echo "${bold}                        ${undl}Use of date${exundl}  "
                                 echo "${txtblu} It displays the date and time of the system clock..... Try it yourself${txtrst} "
                                 read c
-                                if [ $c=="date" ]
-                                then
-                     		date
-                                else
-                                {
-                                echo "You have written it wrongly try again "
-                                game
-                                }
-                                fi
+                            case $c in
+"date")echo "\n\n"
+                     		date;;
+                               
+                                *)
+				echo "\n\n"
+				$sleep
+				$sleep
+                                echo "${txtred}${bold}You have written it wrongly try again${txtrst} "
+                               	$sleep
+				$sleep
+				 game;;
+esac
                                 $sleep
                                 $sleep
                                 $clr
                                 echo "${txtylw} ${bold}WELL DONE ${txtrst}"
-                                echo "${txtpur} ${rev}Now let us know about some options of date${txtrst}"
-                                echo "${txtblu} We've to write date + %A for printing the full day according to system
-                                Try it yourself only option   ${txtrst}"
-                                echo "date"
-                                read c
-                                if [ $c=="+%A" ]
-                                then
-                            	date +%A
-                                else
-                                {
-                                        echo "You have written it wrongly try again "
-                                        game
-                                }
-                                $clr
-                                echo "${txtblu} Congratulations You have learnt date command ${txtrst}"
-fi
+  				  echo "${txtblu} Congratulations You have learnt date command ${txtrst}"
+$sleep
+$sleep     
+game1                         
 }
 game
 $sleep
@@ -386,23 +373,27 @@ game()
                                 echo "${bold}                        ${undl}Use of pwd${exundl}  "
                                 echo "${txtblu} It displays the name for current working directory..... Try it yourself${txtrst} "
                                 read c
-                                if [ $c=="pwd" ]
-                                then
-                                $(pwd)
-                                else
-                                {
-                                echo "You have written it wrongly try again "
-                                game
-                                }
-                                fi
+                                case $c in 
+                               	pwd)
+				echo "\n"
+                                	pwd;;
+                                
+                               *)
+                                echo "${txtred}${bold}You have written it wrongly try again${txtrst} "
+                                $sleep
 				$sleep
 				$sleep
+				game;;
+             esac
                                 $sleep
                                 $sleep
                                 echo "${txtylw} ${bold}WELL DONE ${txtrst}"
 				$sleep
                                 $clr
-                                echo "${txtblu} Congratulations You have learnt date command ${txtrst}"
+                                echo "${txtblu} Congratulations You have learnt pwd command ${txtrst}"
+$sleep
+$sleep
+game1
 }
 game
 $clr
@@ -411,7 +402,15 @@ exi
 		4)start;;
 		5)
 exi;;
-		esac;;
+*)$clr
+echo "${bold}${txtred}Invalid Option${txtrst}"
+$sleep
+$sleep
+$sleep
+game1 ;;
+		esac
+}
+game1;;
 		2) $clr 
 		$sleep
 		echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to MOTHER CALLING  !!!${exundl}     ${txtrst}"
@@ -419,12 +418,11 @@ exi;;
 		echo "${txtblu} Modern technology owes ecology an apology! 
 		This is what some people say when the read the news about haze, deforestation, extinction of flora and fauna and global warming. They blame modern technology, the materials and ideas developed in the last century to assist humans in their activities, for the deterioration of ecology. The ecological cycle has been very much disturbed by the developments humankind have achieved. Despite these allegations, we should stop and think, does modern technology really owe ecology an apology? For what reason does it owe ecology an apology? Is it because it took away its attractiveness and reduced attention and respect to nature?s beauty? Is it because it harmed the environment? Has all modern technology harmed Mother Nature? I think modern technology does owe ecology an apology as some but not all of it has negatively affected the ecology. 
 		${txtrst} "
-		echo "${txtred} ${bold} Do you want to save Mother earth ???? 
-		Press y for yes and n for No ${txtrst}"
+		echo "${txtred} ${bold}Do you want to save Mother earth ????\nPress y for yes and n for No ${txtrst}"
 		read d 
 		case $d in
 			y) $clr
-			echo "${txtblu} You have made the right decision ...
+			echo "${txtblu}You have made the right decision ...
 *)Plant a Birthday tree
 *)Use Energy saving appliances
 *)Reduce-Reuse-Recycle
@@ -466,7 +464,15 @@ $clr
 			exit;;
 		esac;;
 		3)  start;;
-	esac;;
+*)$clr
+echo "${bold}${txtred}Invalid Option${txtrst}"
+$sleep
+$sleep
+$sleep
+maingame;;
+	esac
+}
+maingame;;
 5)internet()
 {
 	$clr
