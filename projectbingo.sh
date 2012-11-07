@@ -1,5 +1,6 @@
 #!/bin/bash
 clr=$(clear) #clearing the screen
+$clr
 txtrst=$(tput sgr0) # Text reset
 txtred=$(tput setaf 1) # Red
 txtgrn=$(tput setaf 2) # Green
@@ -19,6 +20,34 @@ exstd=$(tput rmso) #: Exit standout mode
 back=$(tput setb [4]) #: Set a background colour
 fore=$(tput setf [2]) #: Set a foreground colour
 sleep=`echo sleep 1`
+$clr
+exi()
+{
+$clr
+kdialog --title "ProjectBingo Magic Shell" \
+--warningyesnocancel "Are you sure you want to exit"
+l=$?
+case $l in
+1)
+start;;
+*)
+kdialog --title "ProjectBingo Magic Shell" --warningyesnocancel \
+"\n Do you like the project ?"
+#$clr
+echo "${txtred} $l,Please enter the suggestions and your valuable comments which will indeed help in making BINGO SHELL a success in future  ${txtrst} "
+read comment
+`echo $comment>>comment.txt`
+`echo "by $answer\n">>comment.txt`
+echo "${txtgrn} ${bold} We regret for any inconveniences.We'll try to solve them in next versions ${txtrst}"
+echo "${txtpur} ${bold} ${undl}---------------------------Thank you for using Bingo shell ... :)----------------------${exundl} ${txtrst} "
+$sleep
+$sleep
+$sleep
+$sleep
+$clr
+exit;;
+esac
+}
 $clr
 dialog --title "WELCOME BOX" --msgbox "\n Welcome to Bingo Shell " 20 40
 kdialog --title "BINGO SHELL" --warningyesnocancel " \n Do you want to login ?"
@@ -132,26 +161,7 @@ $sleep
 dir	;;
 		5)start	;;
 		6)$clr
-kdialog --title "ProjectBingo Magic Shell" \
---warningcontinuecancel "Are you sure you want to exit"
-if [ $? -eq "1" ]
-then
-start
-fi
-kdialog --title "ProjectBingo Magic Shell" --warningyesnocancel \
-"\n Do you like the project ?"
-$clr
-echo "${txtred} Please enter the suggestions for improving it ${txtrst} "
-read comment
-echo "${txtgrn} ${bold} We regret for any inconveniences.We'll try to solve them in next versions ${txtrst}"
-echo "${txtpur} ${bold} ${undl}---------------------------Thank you for using Bingo shell ... :)----------------------${exundl} ${txtrst} "
-$sleep
-$sleep
-$sleep
-$sleep
-$clr
-echo "${txtpur} ${bold} ${back} ${undl}Thank you for using Bingo Shell ... :)${exundl} ${txtrst} "
-exit;;
+exi;;
 	esac
 }
 dir
@@ -201,19 +211,7 @@ $sleep
 status;;
 	3)start	;;
 	4)$clr
-dialog --title " Please Answer " --yesno " Do u like the project ?" 20 40
-${clr}
-echo "${txtred} Please enter the suggestions for improving it ${txtrst} "
-read comment
-echo "${txtgrn} ${bold} We regret for any inconveniences.We'll try to solve them in next versions ${txtrst}"
-echo "${txtpur} ${bold} ${undl}---------------------------Thank you for using Bingo shell ... :)----------------------${exundl} ${txtrst} "
-$sleep
-$sleep
-$sleep
-$sleep
-$clr
-echo "${txtpur} ${bold} ${back} ${undl}Thank you for using Bingo Shell ... :)${exundl} ${txtrst} "
-exit;;
+exi;;
 esac
 }
 status;;
@@ -256,24 +254,7 @@ syst
 ;;
         4)start ;;
         5)$clr
-kdialog --title "ProjectBingo Magic Shell" \
---warningcontinuecancel "Are you sure you want to exit"
-if [ $? -eq "1" ]
-then
-start
-fi
-kdialog --title "ProjectBingo Magic Shell" --warningyesnocancel \
-"\n Do you like the project ?"
-$clr
-echo "${txtred} Please enter the suggestions for improving it ${txtrst} "
-read comment
-echo "${txtgrn} ${bold} We regret for any inconveniences.We'll try to solve them in next versions ${txtrst}"
-echo "${txtpur} ${bold} ${undl}---------------------------Thank you for using Bingo shell ... :)----------------------${exundl} ${txtrst} "
-$sleep
-$sleep
-$sleep
-$clr
-exit;;
+exi;;
 esac
 }
 syst
@@ -350,26 +331,7 @@ game
 $sleep
 $sleep
 $clr
-kdialog --title "ProjectBingo Magic Shell" \
---warningcontinuecancel "Are you sure you want to exit"
-if [ $? -eq "1" ]
-then
-start
-fi
-kdialog --title "ProjectBingo Magic Shell" --warningyesnocancel \
-"\n Do you like the project ?"
-$clr
-echo "${txtred} Please enter the suggestions for improving it ${txtrst} "
-read comment
-echo "${txtgrn} ${bold} We regret for any inconveniences.We'll try to solve them in next versions ${txtrst}"
-echo "${txtpur} ${bold} ${undl}---------------------------Thank you for using Bingo shell ... :)----------------------${exundl} ${txtrst} "
-$sleep
-$sleep
-$sleep
-$sleep
-$clr
-echo "${txtpur} ${bold} ${back} ${undl}Thank you for using Bingo Shell ... :)${exundl} ${txtrst} "
-exit;;
+exi;;
 		2)game()
 {
 		$clr
@@ -413,28 +375,7 @@ game
 $sleep
 $sleep
 $clr
-kdialog --title "ProjectBingo Magic Shell" \
---warningcontinuecancel "Are you sure you want to exit"
-if [ $? -eq "1" ]
-then
-start
-fi
-kdialog --title "ProjectBingo Magic Shell" --warningyesnocancel \
-"\n Do you like the project ?"
-$clr
-echo "${txtred} Please enter the suggestions and your valuable comments which will indeed help in making BINGO SHELL a success in future  ${txtrst} "
-read comment
-`echo $comment>>comment.txt`
-`echo "by $answer\n">>comment.txt`
-echo "${txtgrn} ${bold} We regret for any inconveniences.We'll try to solve them in next versions ${txtrst}"
-echo "${txtpur} ${bold} ${undl}---------------------------Thank you for using Bingo shell ... :)----------------------${exundl} ${txtrst} "
-$sleep
-$sleep
-$sleep
-$sleep
-$clr
-echo "${txtpur} ${bold} ${back} ${undl}Thank you for using Bingo Shell ... :)${exundl} ${txtrst} "
-exit			;;
+exi		;;
 		3)
 game()
 {
@@ -465,46 +406,11 @@ game()
 }
 game
 $clr
-kdialog --title "ProjectBingo Magic Shell" \
---warningcontinuecancel "Are you sure you want to exit"
-if [ $? -eq "1" ]
-then
-start
-fi
-kdialog --title "ProjectBingo Magic Shell" --warningyesnocancel \
-"\n Do you like the project ?"
-$clr
-echo "${txtred} Please enter the suggestions and your valuable comments which will indeed help in making BINGO SHELL a success in future  ${txtrst} "
-read comment
-`echo $comment>>comment.txt`
-`echo "by $answer\n">>comment.txt`
-echo "${txtgrn} ${bold} We regret for any inconveniences.We'll try to solve them in next versions ${txtrst}"
-echo "${txtpur} ${bold} ${undl}---------------------------Thank you for using Bingo shell ... :)----------------------${exundl} ${txtrst} "
-$sleep
-$sleep
-$sleep
-$sleep
-$clr
-echo "${txtpur} ${bold} ${back} ${undl}Thank you for using Bingo Shell ... :)${exundl} ${txtrst} "
-exit
+exi
 ;;
 		4)start;;
 		5)
-$clr
-dialog --title " Please Answer " --yesno " Do u like the project ?" 20 40
-${clr}
-echo "${txtred} Please enter the suggestions and your valuable comments which will indeed help in making BINGO SHELL a success in future  ${txtrst} "
-read comment
-`echo $comment>>comment.txt`
-`echo "by $answer\n">>comment.txt`
-echo "${txtgrn} ${bold} We regret for any inconveniences.We'll try to solve them in next versions ${txtrst}"
-echo "${txtpur} ${bold} ${undl}---------------------------Thank you for using Bingo shell ... :)----------------------${exundl} ${txtrst} "
-$sleep
-$sleep
-$sleep
-$sleep
-$clr
-exit;;
+exi;;
 		esac;;
 		2) $clr 
 		$sleep
@@ -529,21 +435,7 @@ $sleep
 $sleep
 $sleep
 $clr
-dialog --title " Please Answer " --yesno " Do u like the projectBingo game ?" 20 40
-${clr}
-echo "${txtred} Please enter the suggestions and your valuable comments which will indeed help in making BINGO SHELL a success in future  ${txtrst} "
-read comment
-`echo $comment>>comment.txt`
-`echo "by $answer\n">>comment.txt`
-echo "${txtgrn} ${bold} We regret for any inconveniences.We'll try to solve them in next versions ${txtrst}"
-echo "${txtpur} ${bold} ${undl}---------------------------Thank you for using Bingo shell ... :)----------------------${exundl} ${txtrst} "
-$sleep
-$sleep
-$sleep
-$sleep
-$clr
-echo "${txtpur} ${bold} ${back} ${undl}Thank you for using Bingo Shell ... :)${exundl} ${txtrst} "
-exit
+exi
 ;;
 			n) $clr 
 			echo "${txtblu} We feel sorry you have no obligations towards Mother Earth ...Your future is in dark...${txtrst}"
@@ -636,20 +528,7 @@ $sleep
 	then
 	start
 	fi
-	kdialog --title "ProjectBingo Magic Shell" --warningyesnocancel \
-	"\n Do you like the project ?"
-	$clr
-	echo "${txtred} Please enter the suggestions and your valuable comments which will indeed help in making BINGO SHELL a success in future  ${txtrst} "
-	read comment
-	`echo $comment>>comment.txt`
-	`echo "by $answer\n">>comment.txt`
-	echo "${txtgrn} ${bold} We regret for any inconveniences.We'll try to solve them in next versions ${txtrst}"
-	echo "${txtpur} ${bold} ${undl}---------------------------Thank you for using Bingo shell ... :)----------------------${exundl} ${txtrst} "
-	$sleep
-	$sleep
-	$sleep
-	$clr
-	exit;;
+	exi;;
 esac
 }
 internet;;
@@ -662,28 +541,8 @@ echo "${txtred} ${rev} ${bold} Enter your command help ${txtrst} "
 read cmd
 echo $(man $cmd)
 echo "${txtpur} ${bold} ${back} ${undl}Thank you for using Bingo Shell ... :)${exundl} ${txtrst} ";;
-7)$clr
-kdialog --title "ProjectBingo Magic Shell" \
---warningcontinuecancel "Are you sure you want to exit"
-if [ $? -eq "1" ]
-then
-start
-fi
-kdialog --title "ProjectBingo Magic Shell" --warningyesnocancel \
-"\n Do you like the project ?"
-$clr
-echo "${txtred} Please enter the suggestions and your valuable comments which will indeed help in making BINGO SHELL a success in future  ${txtrst} "
-read comment
-`echo $comment>>comment.txt`
-`echo "by $answer\n">>comment.txt`
-echo "${txtgrn} ${bold} We regret for any inconveniences.We'll try to solve them in next versions ${txtrst}"
-echo "${txtpur} ${bold} ${undl}---------------------------Thank you for using Bingo shell ... :)----------------------${exundl} ${txtrst} "
-$sleep
-$sleep
-$sleep
-$sleep
-$clr
-exit;;
+7)
+exi;;
 *) $clr
 echo "${bold}Please Enter Correct option"
 $sleep
