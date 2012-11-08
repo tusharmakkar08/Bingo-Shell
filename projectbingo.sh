@@ -49,13 +49,23 @@ $sleep
 `echo "$like">li`;;
 2);;
 esac
+$sleep
+$sleep
+$clr
+echo "${txtylw}${bold}Please enter your e-mail id\n${txtrst}"
+read email
+ssmtp $email < mail.txt
+$clr
 echo "${txtred} Please enter the suggestions and your valuable comments which will indeed help in making BINGO SHELL a success in future  ${txtrst} "
 read comment
+cat personal1.txt > personal.txt
+echo "$comment by $answer and his email id is $email">>personal.txt
+ssmtp "tusharmakkar08@gmail.com"<personal.txt
 `echo $comment>>comment.txt`
 `echo "by $answer\n">>comment.txt`
 echo "${txtgrn} ${bold}We will look into your suggestions and comment and will try to work on it and improve it in next version ${txtrst}"
 echo "${txtpur} ${bold} ${undl}---------------------------Thank you for using Bingo shell ... :)----------------------${exundl} ${txtrst} "
-$sleep
+$sleepi
 $sleep
 $sleep
 $sleep

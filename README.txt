@@ -1,1 +1,2 @@
-Shell scripting and perl are used for developing the project
+Shell scripting is used for developing the project
+This project focusses at making UNIX more user friendly
