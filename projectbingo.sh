@@ -30,11 +30,11 @@ l=$?
 case $l in
 1)
 start;;
-*)
+0)
 kdialog --title "ProjectBingo Magic Shell" --warningyesnocancel \
 "\n Do you like the project ?"
-#$clr
-echo "${txtred} $l,Please enter the suggestions and your valuable comments which will indeed help in making BINGO SHELL a success in future  ${txtrst} "
+$clr
+echo "${txtred} Please enter the suggestions and your valuable comments which will indeed help in making BINGO SHELL a success in future  ${txtrst} "
 read comment
 `echo $comment>>comment.txt`
 `echo "by $answer\n">>comment.txt`
@@ -46,6 +46,7 @@ $sleep
 $sleep
 $clr
 exit;;
+2)start;;
 esac
 }
 $clr
@@ -538,19 +539,40 @@ $sleep
 esac
 }
 internet;;
-6)
+6)hel(){
 $clr
 $sleep
 echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell Help page  !!!${exundl}     ${txtrst}"
 echo ""
-echo "${txtred} ${rev} ${bold} Enter your command help ${txtrst} "
+echo "${txtred} ${rev} ${bold} Enter 1 for command help and 2 for exit ${txtrst} "
+read c
+case $c in
+1)
+$clr
+$sleep
+echo "${txtylw}${rev}${bold}Enter your command${txtrst}"
 read cmd
-echo $(man $cmd)
-echo "${txtpur} ${bold} ${back} ${undl}Thank you for using Bingo Shell ... :)${exundl} ${txtrst} ";;
+$clr
+$sleep
+man $cmd
+hel;;
+2)
+exi;;
+*)
+$clr
+echo "${txtred}${bold}Invalid Option${txtrst}"
+$sleep
+$sleep
+hel;;
+esac
+$sleep
+$sleep
+}
+hel;;
 7)
 exi;;
 *) $clr
-echo "${bold}Please Enter Correct option"
+echo "${txtred}${bold}Please Enter Correct option${txtrst}"
 $sleep
 $sleep
 $clr
