@@ -119,7 +119,8 @@ echo "${txtcyn} 3--- System status commands "
 echo "${txtcyn} 4--- Games " 
 echo "${txtcyn} 5--- Internet Speed Dial "
 echo "${txtcyn} 6--- Help regarding commands" 
-echo "${txtcyn} 7--- Exit ${txtrst} "  
+echo "${txtcyn} 7--- Exit  "
+echo "\n\n\n${txtylw}${bold} Write bingo to  See what other users have to say about this product\n ${txtrst}"  
 read a
 case $a in
 1)dir()
@@ -323,7 +324,7 @@ syst
                 		done;;
 				*)
 				echo "\n\n"
-                                echo "You have written it wrongly try again "
+                                echo "${txtred}${bold}You have written it wrongly try again ${txtrst}"
                                 $sleep
 				$sleep
 				game;;
@@ -434,14 +435,13 @@ game1;;
 		echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to MOTHER CALLING  !!!${exundl}     ${txtrst}"
 		$sleep
 		$sleep
-		$sleep	
 	kdialog --title "ProjectBingo Magic Shell" --warningyesnocancel \
 	"\n Do you want to play it ?"
 	y=$?
 	case $y in
-	1)exi;;
+	1)maingame;;
 	0);;
-	2)game2;;
+	2)start;;
 	esac
 		echo "${txtblu} Modern technology owes ecology an apology! 
 		This is what some people say when the read the news about haze, deforestation, extinction of flora and fauna and global warming. They blame modern technology, the materials and ideas developed in the last century to assist humans in their activities, for the deterioration of ecology. The ecological cycle has been very much disturbed by the developments humankind have achieved. Despite these allegations, we should stop and think, does modern technology really owe ecology an apology? For what reason does it owe ecology an apology? Is it because it took away its attractiveness and reduced attention and respect to nature?s beauty? Is it because it harmed the environment? Has all modern technology harmed Mother Nature? I think modern technology does owe ecology an apology as some but not all of it has negatively affected the ecology. 
@@ -461,7 +461,7 @@ $sleep
 $sleep
 $sleep
 $clr
-exi
+game2
 ;;
 			n) $clr 
 			echo "${txtblu} We feel sorry you have no obligations towards Mother Earth ...Your future is in dark...${txtrst}"
@@ -575,6 +575,16 @@ $sleep
 hel;;
 7)
 exi;;
+bingo)$clr
+echo "${txtylw}${bold}Here are some of the comments by our users\n\n${txtrst}"
+cat comment.txt
+$sleep
+$sleep
+$sleep
+$sleep
+$sleep
+$sleep
+start;;
 *) $clr
 echo "${txtred}${bold}Please Enter Correct option${txtrst}"
 $sleep
@@ -584,5 +594,3 @@ start;;
 esac
 }
 start
-li.close()
-unli.close()
