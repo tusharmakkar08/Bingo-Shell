@@ -20,7 +20,9 @@ exstd=$(tput rmso) #: Exit standout mode
 back=$(tput setb [4]) #: Set a background colour
 fore=$(tput setf [2]) #: Set a foreground colour
 sleep=`echo sleep 1`
-$clr
+#$clr
+like=`cat li`
+unlike=`cat unli`
 exi()
 {
 $clr
@@ -33,12 +35,25 @@ start;;
 0)
 kdialog --title "ProjectBingo Magic Shell" --warningyesnocancel \
 "\n Do you like the project ?"
-$clr
+y=$?
+case $y in
+1) echo "${txtgrn}${bold}Sorry , we were not able to come up to your expectations . Do write the suggestions on How to improve it in comment Section${txtrst}"
+unlike=$((unlike+1))
+`echo "$unlike">unli`
+$sleep
+$sleep;;
+0)echo "${txtylw}${bold}Thank you for supporting us and raising our confidence.We'll try to always make your life simpler and happy${txtrst}"
+like=$((like+1))
+$sleep
+$sleep
+`echo "$like">li`;;
+2);;
+esac
 echo "${txtred} Please enter the suggestions and your valuable comments which will indeed help in making BINGO SHELL a success in future  ${txtrst} "
 read comment
 `echo $comment>>comment.txt`
 `echo "by $answer\n">>comment.txt`
-echo "${txtgrn} ${bold} We regret for any inconveniences.We'll try to solve them in next versions ${txtrst}"
+echo "${txtgrn} ${bold}We will look into your suggestions and comment and will try to work on it and improve it in next version ${txtrst}"
 echo "${txtpur} ${bold} ${undl}---------------------------Thank you for using Bingo shell ... :)----------------------${exundl} ${txtrst} "
 $sleep
 $sleep
@@ -75,7 +90,7 @@ t;;
 *)
 $clr
 kdialog --title "Input dialog" --inputbox "What name would you like to
-use" "default Name">answer
+use" "Anonymous">answer
 f=1
 ;;
 esac
@@ -84,12 +99,13 @@ start()
 $clr
 echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell !!!${exundl}     ${txtrst}"
 $sleep
+echo "\n\n${txtylw}${bold}${rev}No. of likes = $like ${txtrst}"
+echo "\n"
 if [ "$f" -eq "1" ]
 then
 answer="`cat answer`"
 fi
-printf "Hi $answer"
-echo "${bold} Hope your stay with us will be problem free ${txtrst}"
+echo "${bold} Hi $answer  Hope your stay with us will be problem free ${txtrst}"
 i=0
 while [ $i -le 0 ]
 do
@@ -103,7 +119,8 @@ echo "${txtcyn} 3--- System status commands "
 echo "${txtcyn} 4--- Games " 
 echo "${txtcyn} 5--- Internet Speed Dial "
 echo "${txtcyn} 6--- Help regarding commands" 
-echo "${txtcyn} 7--- Exit ${txtrst} "  
+echo "${txtcyn} 7--- Exit  "
+echo "\n\n\n${txtylw}${bold} Write bingo to  See what other users have to say about this product\n ${txtrst}"  
 read a
 case $a in
 1)dir()
@@ -307,7 +324,7 @@ syst
                 		done;;
 				*)
 				echo "\n\n"
-                                echo "You have written it wrongly try again "
+                                echo "${txtred}${bold}You have written it wrongly try again ${txtrst}"
                                 $sleep
 				$sleep
 				game;;
@@ -412,10 +429,20 @@ game1 ;;
 		esac
 }
 game1;;
-		2) $clr 
+		2)game2()
+{ $clr 
 		$sleep
 		echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to MOTHER CALLING  !!!${exundl}     ${txtrst}"
-		echo " "
+		$sleep
+		$sleep
+	kdialog --title "ProjectBingo Magic Shell" --warningyesnocancel \
+	"\n Do you want to play it ?"
+	y=$?
+	case $y in
+	1)maingame;;
+	0);;
+	2)start;;
+	esac
 		echo "${txtblu} Modern technology owes ecology an apology! 
 		This is what some people say when the read the news about haze, deforestation, extinction of flora and fauna and global warming. They blame modern technology, the materials and ideas developed in the last century to assist humans in their activities, for the deterioration of ecology. The ecological cycle has been very much disturbed by the developments humankind have achieved. Despite these allegations, we should stop and think, does modern technology really owe ecology an apology? For what reason does it owe ecology an apology? Is it because it took away its attractiveness and reduced attention and respect to nature?s beauty? Is it because it harmed the environment? Has all modern technology harmed Mother Nature? I think modern technology does owe ecology an apology as some but not all of it has negatively affected the ecology. 
 		${txtrst} "
@@ -434,36 +461,17 @@ $sleep
 $sleep
 $sleep
 $clr
-exi
+game2
 ;;
 			n) $clr 
 			echo "${txtblu} We feel sorry you have no obligations towards Mother Earth ...Your future is in dark...${txtrst}"
 			${sleep}
 			${sleep}
 			${sleep}
-			kdialog --title "ProjectBingo Magic Shell" \
---warningcontinuecancel "Are you sure you want to exit"
-if [ $? -eq "1" ]
-then
-start
-fi
-kdialog --title "ProjectBingo Magic Shell" --warningyesnocancel \
-"\n Do you like the project ?"
-$clr
-echo "${txtred} Please enter the suggestions and your valuable comments which will indeed help in making BINGO SHELL a success in future  ${txtrst} "
-read comment
-`echo $comment>>comment.txt`
-`echo "by $answer\n">>comment.txt`
-echo "${txtgrn} ${bold} We regret for any inconveniences.We'll try to solve them in next versions ${txtrst}"
-$sleep
-$sleep
-$sleep
-$sleep
-$clr
-
-			echo "${txtpur} ${bold} ${back} ${undl}Thank you for playing Bingo MOTHER EARTH ... :)${exundl} ${txtrst} "
-			exit;;
-		esac;;
+			game2;;
+		esac
+}
+game2;;
 		3)  start;;
 *)$clr
 echo "${bold}${txtred}Invalid Option${txtrst}"
@@ -488,7 +496,8 @@ maingame;;
 	echo "${txtcyn} 5--- Duck Duck Go "
 	echo " 6--- Some adult web site"
 	echo "${txtcyn} 7--- Any other Site "
-	echo "${txtcyn} 8--- Exit ${txtrst}"
+	echo " 8--- Go back to previous menu "
+	echo "${txtcyn} 9--- Exit ${txtrst}"
 	read b
 	case $b in
 		1) `echo firefox 'http://facebook.com'`
@@ -528,13 +537,8 @@ $sleep
 			${txtrst}" 
 			read site
 			`echo firefox $site`;;
-		8)$clr
-	kdialog --title "ProjectBingo Magic Shell" \
-	--warningcontinuecancel "Are you sure you want to exit"
-	if [ $? -eq "1" ]
-	then
-	start
-	fi
+		8)start;;	
+	9)$clr
 	exi;;
 esac
 }
@@ -571,6 +575,16 @@ $sleep
 hel;;
 7)
 exi;;
+bingo)$clr
+echo "${txtylw}${bold}Here are some of the comments by our users\n\n${txtrst}"
+cat comment.txt
+$sleep
+$sleep
+$sleep
+$sleep
+$sleep
+$sleep
+start;;
 *) $clr
 echo "${txtred}${bold}Please Enter Correct option${txtrst}"
 $sleep
