@@ -130,7 +130,8 @@ echo "${txtcyn} 4--- Games "
 echo "${txtcyn} 5--- Internet Speed Dial "
 echo "${txtcyn} 6--- Help regarding commands" 
 echo "${txtcyn} 7--- Exit  "
-echo "\n\n\n${txtylw}${bold} Write bingo to  See what other users have to say about this product\n ${txtrst}"  
+echo " 8--- For opening simple terminal "
+echo "\n\n\n${txtylw}${bold} Write bingo to  See what other users have to say about this product\n ${txtrst}"
 read a
 case $a in
 1)dir()
@@ -592,6 +593,10 @@ $sleep
 $sleep
 $sleep
 $sleep
+$sleep
+$sleep
+start;;
+8)x-terminal-emulator
 $sleep
 $sleep
 start;;
