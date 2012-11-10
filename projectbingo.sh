@@ -1,6 +1,4 @@
 #!/bin/bash
-clr=$(clear) #clearing the screen
-$clr
 txtrst=$(tput sgr0) # Text reset
 txtred=$(tput setaf 1) # Red
 txtgrn=$(tput setaf 2) # Green
@@ -19,13 +17,14 @@ exstd=$(tput rmso) #: Exit standout mode
 # all modes are from 1 to 7
 back=$(tput setb [4]) #: Set a background colour
 fore=$(tput setf [2]) #: Set a foreground colour
+cd /home/tushar/Unix*
+clear
 sleep=`echo sleep 1`
-#$clr
 like=`cat li`
 unlike=`cat unli`
 exi()
 {
-$clr
+clear
 kdialog --title "ProjectBingo Magic Shell" \
 --warningyesnocancel "Are you sure you want to exit"
 l=$?
@@ -33,93 +32,98 @@ case $l in
 1)
 start;;
 0)
+clear
 kdialog --title "ProjectBingo Magic Shell" --warningyesnocancel \
 "\n Do you like the project ?"
 y=$?
+clear
 case $y in
-1) echo "${txtgrn}${bold}Sorry , we were not able to come up to your expectations . Do write the suggestions on How to improve it in comment Section${txtrst}"
+1) echo -e "${txtgrn}${bold}Sorry , we were not able to come up to your expectations . Do write the suggestions on How to improve it in comment Section${txtrst}"
 unlike=$((unlike+1))
-`echo "$unlike">unli`
-$sleep
+`echo -e "$unlike">unli`
 $sleep;;
-0)echo "${txtylw}${bold}Thank you for supporting us and raising our confidence.We'll try to always make your life simpler and happy${txtrst}"
+0)echo -e "${txtylw}${bold}Thank you for supporting us and raising our confidence.We'll try to always make your life simpler and happy${txtrst}"
 like=$((like+1))
 $sleep
 $sleep
-`echo "$like">li`;;
+`echo -e "$like">li`;;
 2);;
 esac
 $sleep
-$sleep
-$clr
-echo "${txtylw}${bold}Please enter your e-mail id\n${txtrst}"
+clear
+echo -e "${txtylw}${bold}Please enter your e-mail id\n${txtrst}"
 read email
 ssmtp $email < mail.txt
-$clr
-echo "${txtred} Please enter the suggestions and your valuable comments which will indeed help in making BINGO SHELL a success in future  ${txtrst} "
+clear
+echo -e "${txtred} Please enter the suggestions and your valuable comments which will indeed help in making BINGO SHELL a success in future  ${txtrst} "
 read comment
 cat personal1.txt > personal.txt
-echo "$comment by $answer and his email id is $email">>personal.txt
+echo -e "$comment by $answer and his email id is $email">>personal.txt
 ssmtp "tusharmakkar08@gmail.com"<personal.txt
 `echo $comment>>comment.txt`
 `echo "by $answer\n">>comment.txt`
-echo "${txtgrn} ${bold}We will look into your suggestions and comment and will try to work on it and improve it in next version ${txtrst}"
-echo "${txtpur} ${bold} ${undl}---------------------------Thank you for using Bingo shell ... :)----------------------${exundl} ${txtrst} "
-$sleepi
+echo -e "${txtgrn} ${bold}We will look into your suggestions and comment and will try to work on it and improve it in next version ${txtrst}"
+echo -e "${txtpur} ${bold} ${undl}---------------------------Thank you for using Bingo shell ... :)----------------------${exundl} ${txtrst} "
 $sleep
 $sleep
 $sleep
-$clr
+$sleep
+clear
 exit;;
 2)start;;
 esac
 }
-$clr
+clear
 kdialog --title "BINGO SHELL" --msgbox "Welcome to the amazing world of BINGO Interactive GUI shell \n " 
 kdialog --title "BINGO SHELL" --warningyesnocancel " \n Do you want to login ?"
 i=$?
+clear
 f=0
 case $i in
 0)
-$clr
+clear
 t()
 {
 password=`kdialog --password "Enter the password"`
+clear
 if [ "$password" -eq "12345" ]
 then
 kdialog --msgbox "Password correct.\n Going to shell"
+clear
 answer="Tushar Makkar"
 f=0
 else
-$clr
+clear
 kdialog --sorry "Password incorrect.\n Try again"
+clear
 t
+clear
 fi
 }
 t;;
 *)
-$clr
+clear
 kdialog --title "Input dialog" --inputbox "What name would you like to
 use" "Anonymous">answer
+clear
 f=1
 ;;
 esac
 start()
 {
-$clr
-echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell !!!${exundl}     ${txtrst}"
-$sleep
-echo "\n\n${txtylw}${bold}${rev}No. of likes = $like ${txtrst}"
-echo "\n"
+clear
+echo -e  "\n${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell !!!${exundl}     ${txtrst}"
+echo -e "\n\n${txtylw}${bold}${rev}No. of likes = $like ${txtrst}"
+echo -e "\n"
 if [ "$f" -eq "1" ]
 then
 answer="`cat answer`"
 fi
-echo "${bold} Hi $answer  Hope your stay with us will be problem free ${txtrst}"
+echo -e "${bold} Hi $answer  Hope your stay with us will be problem free ${txtrst}"
 i=0
 while [ $i -le 0 ]
 do
-echo 
+echo -e "\n"
 i=$((i+1))
 done
 echo "${txtred} ${rev} ${bold} Enter your choice ${txtrst} "
@@ -132,12 +136,12 @@ echo " 6--- Help regarding commands"
 echo " 7--- Exit  "
 echo " 8--- For opening simple terminal "
 echo " 9--- For listening to awesome music "
-echo "\n\n\n${txtylw}${bold} Write bingo to  See what other users have to say about this product\n ${txtrst}"
+echo -e "\n\n${txtylw}${bold} Write bingo to  See what other users have to say about this product\n ${txtrst}"
 read a
 case $a in
 1)dir()
 {
-$clr
+clear
        $sleep
         echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell File and Directory Page  !!!${exundl}     ${txtrst}"
         echo ""
@@ -150,7 +154,7 @@ $clr
 	 echo "${txtcyn}6--- Exit the file ${txtrst}"
 	read file
 	case $file in
-		1)$clr
+		1)clear
 		 $sleep
 		echo "${txtcyn}Enter filename${txtrst}"
 		read filen
@@ -159,7 +163,7 @@ $sleep
 $sleep
 $sleep
 dir;;
-		2)$clr
+		2)clear
                  $sleep
                 echo "${txtcyn}Enter filename${txtrst}"
                 read filen
@@ -171,7 +175,7 @@ $sleep
 $sleep
 dir
 ;;
-		3)$clr
+		3)clear
                  $sleep
                 for i in `ls -a `
 		do
@@ -191,14 +195,14 @@ $sleep
 $sleep
 dir	;;
 		5)start	;;
-		6)$clr
+		6)clear
 exi;;
 	esac
 }
 dir
 ;;
 2)status(){
-$clr
+clear
        $sleep
         echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell Text Processing  Page  !!!${exundl}     ${txtrst}"
         echo ""
@@ -214,14 +218,14 @@ read file
 echo $file
 if [ -e $file ]
 then
-echo "${txtblu}file is found\nDo you want to open the file press 1 for Yes \n  ${txtrst}"
+echo -e "${txtblu}file is found\nDo you want to open the file press 1 for Yes \n  ${txtrst}"
 read k
 if [ "$k" -eq "1" ]
 then
 gedit $file
 fi
 else
-echo "${txtblu}File not found \n ${txtrst} "
+echo -e "${txtblu}File not found \n ${txtrst} "
 fi
 $sleep
 $sleep
@@ -234,21 +238,21 @@ if [ -e $file ]
 then
 wc $file
 else
-echo "${txtblu}File not found \n${txtrst} "
+echo -e "${txtblu}File not found \n${txtrst} "
 fi
 $sleep
 $sleep
 $sleep
 status;;
 	3)start	;;
-	4)$clr
+	4)clear
 exi;;
 esac
 }
 status;;
 3)syst()
 {
-$clr
+clear
        $sleep
         echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell System Status Page  !!!${exundl}     ${txtrst}"
         echo ""
@@ -284,7 +288,7 @@ $sleep
 syst
 ;;
         4)start ;;
-        5)$clr
+        5)clear
 exi;;
 esac
 }
@@ -292,7 +296,7 @@ syst
 ;;
 4)maingame()
 {
-	$clr
+	clear
 	$sleep
 	echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell Game Page  !!!${exundl}     ${txtrst}"
 	echo ""
@@ -306,7 +310,7 @@ syst
 		1)
 		game1()
 {	
-		 $clr
+		 clear
                 $sleep
                 echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to UNIX WONDERS  !!!${exundl}     ${txtrst}"
                 echo " "
@@ -321,7 +325,8 @@ syst
 		case $input in
 			1)game()
 {
-				$clr $sleep
+				clear
+ $sleep
 				echo "${txtgrn} ${bold}ls command${txtrst} "
 				echo ""
 				echo "${bold}                        ${undl}Use of ls${exundl}  "
@@ -329,13 +334,13 @@ syst
 				read c
 				case $c in 
 				ls)
-				echo "\n\n"
+				echo -e "\n\n"
 				for i in `ls`
                			do
                				 echo $i
                 		done;;
 				*)
-				echo "\n\n"
+				echo -e "\n\n"
                                 echo "${txtred}${bold}You have written it wrongly try again ${txtrst}"
                                 $sleep
 				$sleep
@@ -344,7 +349,7 @@ syst
                             
 				$sleep
 				$sleep
-				$clr
+				clear
 				echo "${txtylw} ${bold}WELL DONE ${txtrst}"
 				echo "${txtblu} Congratulations You have learnt ls command ${txtrst}"
 
@@ -355,11 +360,11 @@ game1
 game
 $sleep
 $sleep
-$clr
+clear
 exi;;
 		2)game()
 {
-		$clr
+		clear
 		$sleep
 		  echo "${txtgrn} ${bold}date command${txtrst} "
                                 echo ""
@@ -367,11 +372,11 @@ exi;;
                                 echo "${txtblu} It displays the date and time of the system clock..... Try it yourself${txtrst} "
                                 read c
                             case $c in
-"date")echo "\n\n"
+"date")echo -e "\n\n"
                      		date;;
                                
                                 *)
-				echo "\n\n"
+				echo -e "\n\n"
 				$sleep
 				$sleep
                                 echo "${txtred}${bold}You have written it wrongly try again${txtrst} "
@@ -396,7 +401,7 @@ exi		;;
 		3)
 game()
 {
-                $clr
+                clear
                 $sleep
                   echo "${txtgrn} ${bold}pwd command${txtrst} "
                                 echo ""
@@ -405,7 +410,7 @@ game()
                                 read c
                                 case $c in 
                                	pwd)
-				echo "\n"
+				echo -e "\n"
                                 	pwd;;
                                 
                                *)
@@ -419,20 +424,20 @@ game()
                                 $sleep
                                 echo "${txtylw} ${bold}WELL DONE ${txtrst}"
 				$sleep
-                                $clr
+                                clear
                                 echo "${txtblu} Congratulations You have learnt pwd command ${txtrst}"
 $sleep
 $sleep
 game1
 }
 game
-$clr
+clear
 exi
 ;;
 		4)start;;
 		5)
 exi;;
-*)$clr
+*)clear
 echo "${bold}${txtred}Invalid Option${txtrst}"
 $sleep
 $sleep
@@ -442,7 +447,7 @@ game1 ;;
 }
 game1;;
 		2)game2()
-{ $clr 
+{ clear
 		$sleep
 		echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to MOTHER CALLING  !!!${exundl}     ${txtrst}"
 		$sleep
@@ -458,10 +463,10 @@ game1;;
 		echo "${txtblu} Modern technology owes ecology an apology! 
 		This is what some people say when the read the news about haze, deforestation, extinction of flora and fauna and global warming. They blame modern technology, the materials and ideas developed in the last century to assist humans in their activities, for the deterioration of ecology. The ecological cycle has been very much disturbed by the developments humankind have achieved. Despite these allegations, we should stop and think, does modern technology really owe ecology an apology? For what reason does it owe ecology an apology? Is it because it took away its attractiveness and reduced attention and respect to nature?s beauty? Is it because it harmed the environment? Has all modern technology harmed Mother Nature? I think modern technology does owe ecology an apology as some but not all of it has negatively affected the ecology. 
 		${txtrst} "
-		echo "${txtred} ${bold}Do you want to save Mother earth ????\nPress y for yes and n for No ${txtrst}"
+		echo -e "${txtred} ${bold}Do you want to save Mother earth ????\nPress y for yes and n for No ${txtrst}"
 		read d 
 		case $d in
-			y) $clr
+			y) clear
 			echo "${txtblu}You have made the right decision ...
 *)Plant a Birthday tree
 *)Use Energy saving appliances
@@ -472,10 +477,10 @@ echo "${txtpur} ${bold} ${back} ${undl}Thank you for playing MOTHER EARTH ... :)
 $sleep
 $sleep
 $sleep
-$clr
+clear
 game2
 ;;
-			n) $clr 
+			n) clear 
 			echo "${txtblu} We feel sorry you have no obligations towards Mother Earth ...Your future is in dark...${txtrst}"
 			${sleep}
 			${sleep}
@@ -485,7 +490,7 @@ game2
 }
 game2;;
 		3)  start;;
-*)$clr
+*)clear
 echo "${bold}${txtred}Invalid Option${txtrst}"
 $sleep
 $sleep
@@ -496,7 +501,7 @@ maingame;;
 maingame;;
 5)internet()
 {
-	$clr
+	clear
 	$sleep
 	echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell Internet page  !!!${exundl}     ${txtrst}"
 	echo ""
@@ -533,12 +538,12 @@ maingame;;
 	v=$((2012-l))
 	if [ $v -gt 19 ]
 	then
-	echo "${bold} ${txtred} Access Granted\n ${txtrst}"
-	echo "${txtcyn} Enter site \n ${txtrst}"
+	echo -e "${bold} ${txtred} Access Granted\n ${txtrst}"
+	echo -e "${txtcyn} Enter site \n ${txtrst}"
 	read site
 	`echo firefox $site`
 	else
-	echo "${bold} ${txtred} Access Denied\n ${txtrst}"
+	echo -e "${bold} ${txtred} Access Denied\n ${txtrst}"
 	fi
 $sleep
 $sleep
@@ -550,13 +555,13 @@ $sleep
 			read site
 			`echo firefox $site`;;
 		8)start;;	
-	9)$clr
+	9)clear
 	exi;;
 esac
 }
 internet;;
 6)hel(){
-$clr
+clear
 $sleep
 echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell Help page  !!!${exundl}     ${txtrst}"
 echo ""
@@ -564,18 +569,18 @@ echo "${txtred} ${rev} ${bold} Enter 1 for command help and 2 for exit ${txtrst}
 read c
 case $c in
 1)
-$clr
+clear
 $sleep
 echo "${txtylw}${rev}${bold}Enter your command${txtrst}"
 read cmd
-$clr
+clear
 $sleep
 man $cmd
 hel;;
 2)
 exi;;
 *)
-$clr
+clear
 echo "${txtred}${bold}Invalid Option${txtrst}"
 $sleep
 $sleep
@@ -587,8 +592,8 @@ $sleep
 hel;;
 7)
 exi;;
-bingo)$clr
-echo "${txtylw}${bold}Here are some of the comments by our users\n\n${txtrst}"
+bingo)clear
+echo -e "${txtylw}${bold}Here are some of the comments by our users\n\n${txtrst}"
 cat comment.txt
 $sleep
 $sleep
@@ -604,13 +609,13 @@ start;;
 9)gnome-terminal -x mplayer -playlist playlist -shuffle
 $sleep
 $sleep
-$clr
+clear
 start;;
-*) $clr
+*) clear
 echo "${txtred}${bold}Please Enter Correct option${txtrst}"
 $sleep
 $sleep
-$clr
+clear
 start;;
 esac
 }
