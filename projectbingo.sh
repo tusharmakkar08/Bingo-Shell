@@ -320,7 +320,8 @@ syst
 		echo "${txtcyn} 2--- date "
 		echo "${txtcyn} 3--- pwd "
 		echo "${txtcyn} 4--- Go back to main page "
-		echo "${txtcyn} 5--- Exit ${txtrst}"
+		echo " 5--- Go Back to game's page"
+		echo "${txtcyn} 6--- Exit ${txtrst}"
 		read input
 		case $input in
 			1)game()
@@ -435,7 +436,8 @@ clear
 exi
 ;;
 		4)start;;
-		5)
+5)maingame;;
+		6)
 exi;;
 *)clear
 echo "${bold}${txtred}Invalid Option${txtrst}"
@@ -460,10 +462,10 @@ game1;;
 	0);;
 	2)start;;
 	esac
-		echo "${txtred}${bold} Modern technology owes ecology an apology! 
-		This is what some people say when the read the news about haze, deforestation, extinction of flora and fauna and global warming. They blame modern technology, the materials and ideas developed in the last century to assist humans in their activities, for the deterioration of ecology. The ecological cycle has been very much disturbed by the developments humankind have achieved. Despite these allegations, we should stop and think, does modern technology really owe ecology an apology? For what reason does it owe ecology an apology? Is it because it took away its attractiveness and reduced attention and respect to nature?s beauty? Is it because it harmed the environment? Has all modern technology harmed Mother Nature? I think modern technology does owe ecology an apology as some but not all of it has negatively affected the ecology. 
-		${txtrst} "
-		echo -e "${txtred}${bold}Do you want to save Mother earth ????\nPress y for yes and n for No ${txtrst}"
+		clear
+		echo -e "${txtcyn}${bold} Modern technology owes ecology an apology!\nThis is what some people say when the read the news about haze, deforestation, extinction of flora and fauna and global warming.\nThey blame modern technology, the materials and ideas developed in the last century to assist humans in their activities, for the deterioration of ecology.\nThe ecological cycle has been very much disturbed by the developments humankind have achieved.\nDespite these allegations, we should stop and think, does modern technology really owe ecology an apology?\nFor what reason does it owe ecology an apology?\nIs it because it took away its attractiveness and reduced attention and respect to nature's beauty?\nIs it because it harmed the environment?\nHas all modern technology harmed Mother Nature?\nI think modern technology does owe ecology an apology as some but not all of it has negatively affected the ecology. ${txtrst}"
+		echo -e "\n\n"
+		echo -e "${txtred}${bold}${rev}Do you want to save Mother earth ?Press y for yes and n for No ${txtrst}"
 		read d 
 		case $d in
 			y) clear
