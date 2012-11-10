@@ -61,7 +61,7 @@ cat personal1.txt > personal.txt
 echo -e "$comment by $answer and his email id is $email">>personal.txt
 ssmtp "tusharmakkar08@gmail.com"<personal.txt
 `echo $comment>>comment.txt`
-`echo "by $answer\n">>comment.txt`
+`echo -e "by $answer\n">>comment.txt`
 echo -e "${txtgrn} ${bold}We will look into your suggestions and comment and will try to work on it and improve it in next version ${txtrst}"
 echo -e "${txtpur} ${bold} ${undl}---------------------------Thank you for using Bingo shell ... :)----------------------${exundl} ${txtrst} "
 $sleep
@@ -112,8 +112,8 @@ esac
 start()
 {
 clear
-echo -e  "\n${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell !!!${exundl}     ${txtrst}"
-echo -e "\n\n${txtylw}${bold}${rev}No. of likes = $like ${txtrst}"
+echo -e  "\n\t\t${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell !!!${exundl}     ${txtrst}"
+echo -e "\n\t${txtylw}${bold}${rev}No. of likes = $like ${txtrst}"
 echo -e "\n"
 if [ "$f" -eq "1" ]
 then
@@ -150,15 +150,24 @@ clear
         echo "${txtcyn}2--- Remove the file "
 	 echo "${txtcyn}3--- List the file "
 	 echo "${txtcyn}4--- Size of the file "
-	 echo "${txtcyn}5--- Go back to the main menu "
-	 echo "${txtcyn}6--- Exit the file ${txtrst}"
+	echo "5--- Create a new file"
+	 echo "${txtcyn}6--- Go back to the main menu "
+	 echo "${txtcyn}7--- Exit  ${txtrst}"
 	read file
 	case $file in
 		1)clear
 		 $sleep
 		echo "${txtcyn}${bold}Enter filename${txtrst}"
 		read filen
-		$(gedit $filen)
+		if [ -e $filen ]
+		then
+		$clear
+		gedit filen
+		$sleep
+		$sleep
+		else
+		echo -e "${txtred}${bold}\n\nFILE NOT FOUND${txtrst}"
+		fi
 $sleep
 $sleep
 $sleep
@@ -194,9 +203,64 @@ $sleep
 $sleep
 $sleep
 dir	;;
-		5)start	;;
-		6)clear
+5)cre()
+{
+	clear
+                 $sleep
+                echo "${txtcyn}${bold}Enter filename${txtrst}"
+                read filen
+                if [ -e $filen ]
+                then
+                echo -e "${txtred}${bold}\n\nFILE WITH SAME NAME IS ALREADY PRESENT${txtrst}"
+                else
+		$clr
+                lsi(){
+		clear
+		echo -e "${txtylw}${bold}Which editor you want to open the file ?${txtrst}"
+		  echo -e "${txtred} ${rev} ${bold}\n Enter your choice ${txtrst} "
+        		echo "${txtcyn}${bold}1--- Gedit " 
+  		      echo "${txtcyn}2--- VIM  "
+  		       echo "${txtcyn}3--- Nano "
+     		    echo "${txtcyn}4--- Emacs "
+		echo "5--- Go back to the previous menu"
+     	   	 echo "${txtcyn}6--- Go back to the main menu "
+        	 echo "${txtcyn}7--- Exit ${txtrst}"
+		read var
+		case $var in
+		1)gedit $var
+		lsi	;;
+		2)vi $var
+	lsi	;;
+		3)nano $var
+	lsi	;;
+		4)emacs $var
+		lsi;;
+		5)dir;;
+		6)start;;
+		7)exi;;
+		*)echo -e "${txtred}${bold}INVALID OPTION${txtrst}"
+		$sleep
+		$sleep
+		lsi;;
+		esac
+}
+lsi
+                fi
+$sleep
+$sleep
+$sleep
+dir
+}
+cre
+;;
+		6)start	;;
+		7)clear
 exi;;
+*)echo 
+ echo "${txtred}${bold}INVALID OPTION ${txtrst}"
+$sleep
+$sleep
+dir;;
 	esac
 }
 dir
@@ -247,6 +311,11 @@ status;;
 	3)start	;;
 	4)clear
 exi;;
+*)echo 
+ echo "${txtred}${bold}INVALID OPTION ${txtrst}"
+$sleep
+$sleep
+status;;
 esac
 }
 status;;
@@ -290,6 +359,12 @@ syst
         4)start ;;
         5)clear
 exi;;
+*)
+echo 
+ echo "${txtred}${bold}INVALID OPTION ${txtrst}"
+$sleep
+$sleep
+syst;;
 esac
 }
 syst
@@ -559,6 +634,12 @@ $sleep
 		8)start;;	
 	9)clear
 	exi;;
+*)
+echo 
+ echo "${txtred}${bold}INVALID OPTION ${txtrst}"
+$sleep
+$sleep
+internet;;
 esac
 }
 internet;;
