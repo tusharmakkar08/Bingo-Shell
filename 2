@@ -55,7 +55,7 @@ echo -e "${txtylw}${bold}Please enter your e-mail id\n${txtrst}"
 read email
 ssmtp $email < mail.txt
 clear
-echo -e "${txtred}${bold} Please enter the suggestions and your valuable comments which will indeed help in making BINGO SHELL a success in future  ${txtrst} "
+echo -e "${txtred} Please enter the suggestions and your valuable comments which will indeed help in making BINGO SHELL a success in future  ${txtrst} "
 read comment
 cat personal1.txt > personal.txt
 echo -e "$comment by $answer and his email id is $email">>personal.txt
@@ -156,7 +156,7 @@ clear
 	case $file in
 		1)clear
 		 $sleep
-		echo "${txtcyn}${bold}Enter filename${txtrst}"
+		echo "${txtcyn}Enter filename${txtrst}"
 		read filen
 		$(gedit $filen)
 $sleep
@@ -165,10 +165,10 @@ $sleep
 dir;;
 		2)clear
                  $sleep
-                echo "${txtcyn}${bold}Enter filename${txtrst}"
+                echo "${txtcyn}Enter filename${txtrst}"
                 read filen
                 $(rm $filen)
-		echo "${txtred}${bold}$filen deleted successfully${txtrst} "
+		echo "${txtred}$filen deleted successfully${txtrst} "
 
 $sleep
 $sleep
@@ -218,27 +218,27 @@ read file
 echo $file
 if [ -e $file ]
 then
-echo -e "${txtblu}${bold}file is found\nDo you want to open the file press 1 for Yes \n  ${txtrst}"
+echo -e "${txtblu}file is found\nDo you want to open the file press 1 for Yes \n  ${txtrst}"
 read k
 if [ "$k" -eq "1" ]
 then
 gedit $file
 fi
 else
-echo -e "${txtblu}${bold}File not found \n ${txtrst} "
+echo -e "${txtblu}File not found \n ${txtrst} "
 fi
 $sleep
 $sleep
 $sleep
 status;;
 	2)
-echo "${bold}${txtylw}Enter file name${txtrst}"
+echo "${bold}Enter file name${txtrst}"
 read file
 if [ -e $file ]
 then
 wc $file
 else
-echo -e "${txtblu}${bold}File not found \n${txtrst} "
+echo -e "${txtblu}File not found \n${txtrst} "
 fi
 $sleep
 $sleep
@@ -316,7 +316,7 @@ syst
                 echo " "
 		echo "${txtred}${bold} Which command you  want to learn today ?${txtrst} "
 		echo "${txtred} ${rev} ${bold} Enter your choice ${txtrst} "
-		echo "${txtcyn}${bold} 1--- ls " 
+		echo "${txtcyn} 1--- ls " 
 		echo "${txtcyn} 2--- date "
 		echo "${txtcyn} 3--- pwd "
 		echo "${txtcyn} 4--- Go back to main page "
@@ -330,7 +330,7 @@ syst
 				echo "${txtgrn} ${bold}ls command${txtrst} "
 				echo ""
 				echo "${bold}                        ${undl}Use of ls${exundl}  "
-				echo "${txtblu}${bold}It lists the contents of directory ... Try it yourself${txtrst} "
+				echo "${txtblu} It lists the contents of directory ... Try it yourself${txtrst} "
 				read c
 				case $c in 
 				ls)
@@ -351,7 +351,7 @@ syst
 				$sleep
 				clear
 				echo "${txtylw} ${bold}WELL DONE ${txtrst}"
-				echo "${txtblu}${bold} Congratulations You have learnt ls command ${txtrst}"
+				echo "${txtblu} Congratulations You have learnt ls command ${txtrst}"
 
 $sleep
 $sleep
@@ -369,7 +369,7 @@ exi;;
 		  echo "${txtgrn} ${bold}date command${txtrst} "
                                 echo ""
                                 echo "${bold}                        ${undl}Use of date${exundl}  "
-                                echo "${txtblu}${bold} It displays the date and time of the system clock..... Try it yourself${txtrst} "
+                                echo "${txtblu} It displays the date and time of the system clock..... Try it yourself${txtrst} "
                                 read c
                             case $c in
 "date")echo -e "\n\n"
@@ -388,7 +388,7 @@ esac
                                 $sleep
                                 $clr
                                 echo "${txtylw} ${bold}WELL DONE ${txtrst}"
-  				  echo "${txtblu}${bold} Congratulations You have learnt date command ${txtrst}"
+  				  echo "${txtblu} Congratulations You have learnt date command ${txtrst}"
 $sleep
 $sleep     
 game1                         
@@ -406,7 +406,7 @@ game()
                   echo "${txtgrn} ${bold}pwd command${txtrst} "
                                 echo ""
                                 echo "${bold}                        ${undl}Use of pwd${exundl}  "
-                                echo "${txtblu}${bold} It displays the name for current working directory..... Try it yourself${txtrst} "
+                                echo "${txtblu} It displays the name for current working directory..... Try it yourself${txtrst} "
                                 read c
                                 case $c in 
                                	pwd)
@@ -425,7 +425,7 @@ game()
                                 echo "${txtylw} ${bold}WELL DONE ${txtrst}"
 				$sleep
                                 clear
-                                echo "${txtblu}${bold} Congratulations You have learnt pwd command ${txtrst}"
+                                echo "${txtblu} Congratulations You have learnt pwd command ${txtrst}"
 $sleep
 $sleep
 game1
@@ -460,14 +460,14 @@ game1;;
 	0);;
 	2)start;;
 	esac
-		echo "${txtred}${bold} Modern technology owes ecology an apology! 
+		echo "${txtblu} Modern technology owes ecology an apology! 
 		This is what some people say when the read the news about haze, deforestation, extinction of flora and fauna and global warming. They blame modern technology, the materials and ideas developed in the last century to assist humans in their activities, for the deterioration of ecology. The ecological cycle has been very much disturbed by the developments humankind have achieved. Despite these allegations, we should stop and think, does modern technology really owe ecology an apology? For what reason does it owe ecology an apology? Is it because it took away its attractiveness and reduced attention and respect to nature?s beauty? Is it because it harmed the environment? Has all modern technology harmed Mother Nature? I think modern technology does owe ecology an apology as some but not all of it has negatively affected the ecology. 
 		${txtrst} "
-		echo -e "${txtred}${bold}Do you want to save Mother earth ????\nPress y for yes and n for No ${txtrst}"
+		echo -e "${txtred} ${bold}Do you want to save Mother earth ????\nPress y for yes and n for No ${txtrst}"
 		read d 
 		case $d in
 			y) clear
-			echo "${txtylw}${bold}You have made the right decision ...
+			echo "${txtblu}You have made the right decision ...
 *)Plant a Birthday tree
 *)Use Energy saving appliances
 *)Reduce-Reuse-Recycle
@@ -481,7 +481,7 @@ clear
 game2
 ;;
 			n) clear 
-			echo "${txtred}${bold} We feel sorry you have no obligations towards Mother Earth ...Your future is in dark...${txtrst}"
+			echo "${txtblu} We feel sorry you have no obligations towards Mother Earth ...Your future is in dark...${txtrst}"
 			${sleep}
 			${sleep}
 			${sleep}
@@ -539,7 +539,7 @@ maingame;;
 	if [ $v -gt 19 ]
 	then
 	echo -e "${bold} ${txtred} Access Granted\n ${txtrst}"
-	echo -e "${txtcyn}${bold} Enter site \n ${txtrst}"
+	echo -e "${txtcyn} Enter site \n ${txtrst}"
 	read site
 	`echo firefox $site`
 	else
@@ -550,7 +550,7 @@ $sleep
 $sleep
 	internet
 	;;
-		7)  echo "${txtcyn}${bold} Enter new site
+		7)  echo "${txtcyn} Enter new site
 			${txtrst}" 
 			read site
 			`echo firefox $site`;;
