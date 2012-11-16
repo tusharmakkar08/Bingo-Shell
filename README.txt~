@@ -29,5 +29,4 @@ For installing Project BINGO SHELL do as follows :
 6- Make yor playlist and change the corresponding address in the file 
 7- Make launcher using gnome-desktop-item-edit ~/Desktop/ --create-new
 8- Rename the launcher
-9- Open launcher in vi text editor. 
-10-There will be 2 icons option.Change the Icon option with gnome written to  the cloned directory bingo1.jpg and second to bingohappy.jpg
+9- Open launcher in vi text editor. There will be 2 icons option.Change the Icon option with gnome written to  the cloned directory bingo1.jpg and second to bingohappy.jpg
