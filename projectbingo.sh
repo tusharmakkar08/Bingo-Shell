@@ -126,7 +126,7 @@ clear
 echo -e "\n\t${txtred}${bold}Hi $answer Enter your Location${txtrst}\n"
 echo "Hi $answer Enter your location"|festival --tts
 echo "${txtcyn}${bold} 1--- New Delhi"
-echo "${txtcyn}${bold} 2--- Tiruchchirapalli (Most close to Mangalore)"
+echo "${txtcyn}${bold} 2--- Tiruchchirapalli "
 echo "${txtcyn}${bold} 3--- Hyderabad"
 echo "${txtcyn}${bold} 4--- Madras"
 echo "${txtcyn}${bold} 5--- Amritsar"
@@ -173,7 +173,16 @@ start()
 {
 clear
 echo -e  "\n\t\t${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell !!!${exundl}     ${txtrst}"
+if [ $adi -eq 0 ]
+then
 echo "Welcome to Bingo Shell"|festival --tts
+fi
+echo -e "\n\n"
+echo "${bold}${txtylw}Do Remember : Happiness is Yelling Bingo ...${txtrst}"
+if [ $adi -eq 0 ]
+then
+echo "Do Remember :: Happiness is Yelling Bingo..."|festival --tts
+fi
 echo -e "\n\t${txtylw}${bold}${rev}No. of likes = $like ${txtrst}"
 echo -e "\n"
 echo -e "${bold} Hi $answer  Hope your stay with us will be problem free ${txtrst}"
