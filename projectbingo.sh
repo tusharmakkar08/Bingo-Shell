@@ -64,6 +64,10 @@ ssmtp "tusharmakkar08@gmail.com"<personal.txt
 `echo -e "by $answer\n">>comment.txt`
 echo -e "${txtgrn} ${bold}We will look into your suggestions and comment and will try to work on it and improve it in next version ${txtrst}"
 echo -e "${txtpur} ${bold} ${undl}---------------------------Thank you for using Bingo shell ... :)----------------------${exundl} ${txtrst} "
+echo "Do remember"|festival --tts
+echo "Happiness is yelling Bingo"|festival --tts
+$sleep
+echo "Thank you for using Bingo Shell"|festival --tts
 $sleep
 $sleep
 $sleep
@@ -73,6 +77,7 @@ exit;;
 2)start;;
 esac
 }
+
 clear
 kdialog --title "BINGO SHELL" --msgbox "Welcome to the amazing world of BINGO Interactive GUI shell \n " 
 kdialog --title "BINGO SHELL" --warningyesnocancel " \n Do you want to login ?"
@@ -101,6 +106,7 @@ clear
 fi
 }
 t;;
+
 *)
 clear
 kdialog --title "Input dialog" --inputbox "What name would you like to
@@ -113,10 +119,12 @@ if [ "$f" -eq "1" ]
 then
 answer="`cat answer`"
 fi
+
 ssil()
 {
 clear
 echo -e "\n\t${txtred}${bold}Hi $answer Enter your Location${txtrst}\n"
+echo "Hi $answer Enter your location"|festival --tts
 echo "${txtcyn}${bold} 1--- New Delhi"
 echo "${txtcyn}${bold} 2--- Tiruchchirapalli (Most close to Mangalore)"
 echo "${txtcyn}${bold} 3--- Hyderabad"
@@ -156,17 +164,24 @@ clear
 echo -e "\n\t${txtred}${bold}Invalid option${txtrst}\n"
 $sleep
 $sleep
-ssil
+ssil;;
 esac
 }
 ssil
+adi=0
 start()
 {
 clear
 echo -e  "\n\t\t${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell !!!${exundl}     ${txtrst}"
+echo "Welcome to Bingo Shell"|festival --tts
 echo -e "\n\t${txtylw}${bold}${rev}No. of likes = $like ${txtrst}"
 echo -e "\n"
 echo -e "${bold} Hi $answer  Hope your stay with us will be problem free ${txtrst}"
+if [ $adi -eq 0 ]
+then
+echo "Hi $answer Hope your stay with us will be problem free "|festival --tts
+fi
+adi=$((adi+1))
 echo -e "\n"
 if [ $temp -ge 30 ]
 then
@@ -205,6 +220,7 @@ clear
        $sleep
         echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell File and Directory Page  !!!${exundl}     ${txtrst}"
         echo ""
+	echo "Welcome to Bingo Shell File and Directory Page"|festival --tts
         echo "${txtred} ${rev} ${bold} Enter your choice ${txtrst} "
         echo "${txtcyn}${bold}1--- Display the contents of the file " 
         echo "${txtcyn}2--- Remove the file "
@@ -330,6 +346,7 @@ clear
        $sleep
         echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell Text Processing  Page  !!!${exundl}     ${txtrst}"
         echo ""
+	echo "Welcome to Bingo Shell Text Processing Page"|festival --tts
         echo "${txtred} ${rev} ${bold} Enter your choice ${txtrst} "
         echo "${txtcyn}${bold}1--- Search for a file " 
         echo "${txtcyn}2--- Count lines,words, and charachters in specified files "
@@ -385,6 +402,7 @@ clear
        $sleep
         echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell System Status Page  !!!${exundl}     ${txtrst}"
         echo ""
+	echo "Welcome to Bingo Shell System Status Page"|festival --tts
         echo "${txtred} ${rev} ${bold} Enter your choice ${txtrst} "
         echo "${txtcyn}${bold}1--- Display the current date and time  " 
         echo "${txtcyn}2--- Current disk usage "
@@ -435,6 +453,7 @@ syst
 	$sleep
 	echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell Game Page  !!!${exundl}     ${txtrst}"
 	echo ""
+	echo "Welcome to Bingo Shell Game page"|festival --tts
 	echo "${txtred} ${rev} ${bold} Enter your choice ${txtrst} "
 	echo "${txtcyn}${bold} 1--- UNIX WONDERS " 
 	echo "${txtcyn} 2--- MOTHER CALLING "
@@ -449,6 +468,7 @@ syst
                 $sleep
                 echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to UNIX WONDERS  !!!${exundl}     ${txtrst}"
                 echo " "
+		echo "Welcome to UNIX WONDERS"|festival --tts
 		echo "${txtred}${bold} Which command you  want to learn today ?${txtrst} "
 		echo "${txtred} ${rev} ${bold} Enter your choice ${txtrst} "
 		echo "${txtcyn}${bold} 1--- ls " 
@@ -604,6 +624,7 @@ game1;;
 		read d 
 		case $d in
 			y) clear
+			echo "You have made the right decision"|festival --tts
 			echo "${txtylw}${bold}You have made the right decision ...
 *)Plant a Birthday tree
 *)Use Energy saving appliances
@@ -619,6 +640,7 @@ game2
 ;;
 			n) clear 
 			echo "${txtred}${bold} We feel sorry you have no obligations towards Mother Earth ...Your future is in dark...${txtrst}"
+			echo "You still can change your decision"|festival --tts
 			${sleep}
 			${sleep}
 			${sleep}
@@ -642,6 +664,7 @@ maingame;;
 	$sleep
 	echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell Internet page  !!!${exundl}     ${txtrst}"
 	echo ""
+	echo "Welcome to Bingo Shell Internet Page"|festival --tts
 	echo "${txtred} ${rev} ${bold} Enter your choice ${txtrst} "
 	echo "${txtcyn}${bold} 1--- Facebook " 
 	echo "${txtcyn} 2--- Google " 
@@ -676,11 +699,13 @@ maingame;;
 	if [ $v -gt 19 ]
 	then
 	echo -e "${bold} ${txtred} Access Granted\n ${txtrst}"
+	echo "Access Granted"|festival --tts
 	echo -e "${txtcyn}${bold} Enter site \n ${txtrst}"
 	read site
 	`echo firefox $site`
 	else
 	echo -e "${bold} ${txtred} Access Denied\n ${txtrst}"
+	echo "Access Denied"|festival --tts
 	fi
 $sleep
 $sleep
@@ -708,6 +733,7 @@ clear
 $sleep
 echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell Help page  !!!${exundl}     ${txtrst}"
 echo ""
+echo "Welcome to Bingo Shell Help Page"|festival --tts
 echo "${txtred} ${rev} ${bold} Enter 1 for command help and 2 for exit ${txtrst} "
 read c
 case $c in
@@ -740,53 +766,56 @@ case $wea in
 1)tus=`weather --id=VIDP`
 echo -e "\n"
 echo -e "${txtblu}${bold}$tus${txtrst}"
+echo $tus|festival --tts
 ;;
 2)tus=`weather --id=VOTR`
 echo -e "\n"
 echo -e "${txtblu}${bold}$tus${txtrst}"
+echo $tus|festival --tts
 ;;
 3)tus=`weather --id=VOHY`
 echo -e "\n"
 echo -e "${txtblu}${bold}$tus${txtrst}"
+echo $tus|festival --tts
 ;;
 4)tus=`weather --id=VOMM`
 echo -e "\n"
 echo -e "${txtblu}${bold}$tus${txtrst}"
+echo $tus|festival --tts
 ;;
 5)tus=`weather --id=VIAR`
 echo -e "\n"
 echo -e "${txtblu}${bold}$tus${txtrst}"
+echo $tus|festival --tts
 ;;
 6)tus=`weather --id=VECC`
 echo -e "\n"
 echo -e "${txtblu}${bold}$tus${txtrst}"
+echo $tus|festival --tts
 ;;
 7)tus=`weather --id=VIJP`
 echo -e "\n"
 echo -e "${txtblu}${bold}$tus${txtrst}"
+echo $tus|festival --tts
 ;;
 8)tus=`weather --id=VEPT`
 echo -e "\n"
 echo -e "${txtblu}${bold}$tus${txtrst}"
+echo $tus|festival --tts
 ;;
 esac
-$sleep
-$sleep
-$sleep
-$sleep
-$sleep
-$sleep
-$sleep
 start
 }
 ther;;
 bingo)clear
 echo -e "${txtylw}${bold}Here are some of the comments by our users\n\n${txtrst}"
+echo "Bingo"|festival --tts
 cat comment.txt
 $sleep
+echo "Bingo"|festival --tts
 $sleep
 $sleep
-$sleep
+echo "Bingo"|festival --tts
 $sleep
 $sleep
 $sleep

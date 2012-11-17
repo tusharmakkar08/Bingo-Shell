@@ -14,12 +14,13 @@ What does BINGO SHELL do ?
 4- Weather API 
 5- Automatic E-mail sending Protocol
 6- Music player integrated
+7- Text to speech synthesizer integrated features. 
 
 
 For installing Project BINGO SHELL do as follows :
 
 
-1- sudo apt-get install mplayer kdebase-bin ssmtp weather-util
+1- sudo apt-get install mplayer kdebase-bin ssmtp weather-util festival
 2- Change mplayer.conf in /etc/mplayer by writing xy=10
 3- Change ssmtp.config in /etc/ssmtp by writing following :
 	root=teambingoshell@gmail.com
