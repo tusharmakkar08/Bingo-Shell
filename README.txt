@@ -11,23 +11,24 @@ What does BINGO SHELL do ?
 1- Provides GUI interface to the users
 2- Make it interesting to learn UNIX by game UNIX WONDERS
 3- Makes Unix User Friendly
+4- Weather API 
+5- Automatic E-mail sending Protocol
+6- Music player integrated
 
 
 For installing Project BINGO SHELL do as follows :
 
 
-1- sudo apt-get install mplayer
-2- sudo apt-get install ssmtp
-3- sudo apt-get install kdebase-bin
-4- Change mplayer.conf in /etc/mplayer by writing xy=10
-5- Change ssmtp.config in /etc/ssmtp by writing following :
+1- sudo apt-get install mplayer kdebase-bin ssmtp weather-util
+2- Change mplayer.conf in /etc/mplayer by writing xy=10
+3- Change ssmtp.config in /etc/ssmtp by writing following :
 	root=teambingoshell@gmail.com
 	mailhub=smtp.gmail.com:587
 	AuthUser=teambingoshell@gmail.com
 	AuthPass=/Password/
 	UseSTARTTLS=yes 
-6- Make yor playlist and change the corresponding address in the file 
-7- Make launcher using gnome-desktop-item-edit ~/Desktop/ --create-new
-8- Rename the launcher
-9- Open launcher in vi text editor. 
-10-There will be 2 icons option.Change the Icon option with gnome written to  the cloned directory bingo1.jpg and second to bingohappy.jpg
+4- Make yor playlist and change the corresponding address in the file 
+5- Make launcher using gnome-desktop-item-edit ~/Desktop/ --create-new
+6- Rename the launcher
+7- Open launcher in vi text editor. 
+8-There will be 2 icons option.Change the Icon option with gnome written to  the cloned directory bingo1.jpg and second to bingohappy.jpg

@@ -109,23 +109,82 @@ clear
 f=1
 ;;
 esac
+if [ "$f" -eq "1" ]
+then
+answer="`cat answer`"
+fi
+ssil()
+{
+clear
+echo -e "\n\t${txtred}${bold}Hi $answer Enter your Location${txtrst}\n"
+echo "${txtcyn}${bold} 1--- New Delhi"
+echo "${txtcyn}${bold} 2--- Tiruchchirapalli (Most close to Mangalore)"
+echo "${txtcyn}${bold} 3--- Hyderabad"
+echo "${txtcyn}${bold} 4--- Madras"
+echo "${txtcyn}${bold} 5--- Amritsar"
+echo "${txtcyn}${bold} 6--- Calcutta"
+echo "${txtcyn}${bold} 7--- Jaipur"
+echo "${txtcyn}${bold} 8--- Patna${txtrst}"
+read wea
+case $wea in
+1)temp=`weather -iVIDP | awk '/Temperature/ {print $4}' | \
+awk -F "(" '{print $2}'`
+;;
+2)temp=`weather -iVOTR | awk '/Temperature/ {print $4}' | \
+awk -F "(" '{print $2}'`
+;;
+3)temp=`weather -iVOHY | awk '/Temperature/ {print $4}' | \
+awk -F "(" '{print $2}'`
+;;
+4)temp=`weather -iVOMM | awk '/Temperature/ {print $4}' | \
+awk -F "(" '{print $2}'`
+;;
+5)temp=`weather -iVIAR | awk '/Temperature/ {print $4}' | \
+awk -F "(" '{print $2}'`
+;;
+6)temp=`weather -iVECC | awk '/Temperature/ {print $4}' | \
+awk -F "(" '{print $2}'`
+;;
+7)temp=`weather -iVIJP | awk '/Temperature/ {print $4}' | \
+awk -F "(" '{print $2}'`
+;;
+8)temp=`weather -iVEPT | awk '/Temperature/ {print $4}' | \
+awk -F "(" '{print $2}'`
+;;
+*)
+clear
+echo -e "\n\t${txtred}${bold}Invalid option${txtrst}\n"
+$sleep
+$sleep
+ssil
+esac
+}
+ssil
 start()
 {
 clear
 echo -e  "\n\t\t${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell !!!${exundl}     ${txtrst}"
 echo -e "\n\t${txtylw}${bold}${rev}No. of likes = $like ${txtrst}"
 echo -e "\n"
-if [ "$f" -eq "1" ]
-then
-answer="`cat answer`"
-fi
 echo -e "${bold} Hi $answer  Hope your stay with us will be problem free ${txtrst}"
-i=0
-while [ $i -le 0 ]
-do
 echo -e "\n"
-i=$((i+1))
-done
+if [ $temp -ge 30 ]
+then
+echo "${txtylw}${bold}I am sweating badly.. Don't you ?? Temperature in your area is $temp degree celsius"
+elif [ $temp -ge 25 ]
+then
+echo "${txtylw}${bold} I am feeling dry Don't you ??..  Temperature in your area is $temp degree celsius"
+elif [ $temp -ge 20 ]
+then
+echo "${txtylw}${ylw} I am able to smell the spring flowers :) .. Temperature in your area is $temp degree celsius"
+elif [ $temp -ge 10 ]
+then
+echo "${txtylw}${bold}I am enjoying the pleasant weather. Don't you?? .. Temperature in your area is $temp degree celsius"
+elif [ $temp -ge 0 ]
+then
+echo "${txtylw}${bold}I'm shivering .. Don't you ?? Temperature in your area is $temp degree celsius"
+fi
+echo -e "\n"
 echo "${txtred} ${rev} ${bold} Enter your choice ${txtrst} "
 echo "${txtcyn}${bold} 1--- File and Directory management commands " 
 echo " 2--- Text processing commands " 
@@ -133,9 +192,10 @@ echo " 3--- System status commands "
 echo " 4--- Games " 
 echo " 5--- Internet Speed Dial "
 echo " 6--- Help regarding commands" 
-echo " 7--- Exit  "
+echo " 7--- To know about the weather in your area "
 echo " 8--- For opening simple terminal "
 echo " 9--- For listening to awesome music "
+echo " 10--- Exit "
 echo -e "\n\n${txtylw}${bold} Write bingo to  See what other users have to say about this product\n ${txtrst}"
 read a
 case $a in
@@ -673,11 +733,57 @@ $sleep
 $sleep
 }
 hel;;
-7)
-exi;;
+7)ther(){
+clear
+echo "${txtylw}${bold}Weather conditions in your area is as follows :${txtrst}"
+case $wea in
+1)tus=`weather --id=VIDP`
+echo -e "\n"
+echo -e "${txtblu}${bold}$tus${txtrst}"
+;;
+2)tus=`weather --id=VOTR`
+echo -e "\n"
+echo -e "${txtblu}${bold}$tus${txtrst}"
+;;
+3)tus=`weather --id=VOHY`
+echo -e "\n"
+echo -e "${txtblu}${bold}$tus${txtrst}"
+;;
+4)tus=`weather --id=VOMM`
+echo -e "\n"
+echo -e "${txtblu}${bold}$tus${txtrst}"
+;;
+5)tus=`weather --id=VIAR`
+echo -e "\n"
+echo -e "${txtblu}${bold}$tus${txtrst}"
+;;
+6)tus=`weather --id=VECC`
+echo -e "\n"
+echo -e "${txtblu}${bold}$tus${txtrst}"
+;;
+7)tus=`weather --id=VIJP`
+echo -e "\n"
+echo -e "${txtblu}${bold}$tus${txtrst}"
+;;
+8)tus=`weather --id=VEPT`
+echo -e "\n"
+echo -e "${txtblu}${bold}$tus${txtrst}"
+;;
+esac
+$sleep
+$sleep
+$sleep
+$sleep
+$sleep
+$sleep
+$sleep
+start
+}
+ther;;
 bingo)clear
 echo -e "${txtylw}${bold}Here are some of the comments by our users\n\n${txtrst}"
 cat comment.txt
+$sleep
 $sleep
 $sleep
 $sleep
@@ -694,6 +800,8 @@ $sleep
 $sleep
 clear
 start;;
+10)exi
+;;
 *) clear
 echo "${txtred}${bold}Please Enter Correct option${txtrst}"
 $sleep
