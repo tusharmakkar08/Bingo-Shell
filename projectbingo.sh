@@ -94,12 +94,14 @@ clear
 if [ "$password" -eq "12345" ]
 then
 kdialog --msgbox "Password correct.\n Going to shell"
+echo "Password correct : Going to Bingo Shell "|festival --tts
 clear
 answer="Tushar Makkar"
 f=0
 else
 clear
 kdialog --sorry "Password incorrect.\n Try again"
+echo "Sorry , Try Again"|festival --tts
 clear
 t
 clear
@@ -516,6 +518,7 @@ syst
 				$sleep
 				clear
 				echo "${txtylw} ${bold}WELL DONE ${txtrst}"
+				echo "Well Done"|festival --tts
 				echo "${txtblu}${bold} Congratulations You have learnt ls command ${txtrst}"
 
 $sleep
@@ -553,6 +556,7 @@ esac
                                 $sleep
                                 $clr
                                 echo "${txtylw} ${bold}WELL DONE ${txtrst}"
+				echo "Well Done"|festival --tts
   				  echo "${txtblu}${bold} Congratulations You have learnt date command ${txtrst}"
 $sleep
 $sleep     
@@ -588,7 +592,7 @@ game()
                                 $sleep
                                 $sleep
                                 echo "${txtylw} ${bold}WELL DONE ${txtrst}"
-				$sleep
+				echo "Well Done"|festival --tts
                                 clear
                                 echo "${txtblu}${bold} Congratulations You have learnt pwd command ${txtrst}"
 $sleep
@@ -617,7 +621,7 @@ game1;;
 		$sleep
 		echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to MOTHER CALLING  !!!${exundl}     ${txtrst}"
 		$sleep
-		$sleep
+		echo "Welcome to Mother Calling"|festival --tts
 	kdialog --title "ProjectBingo Magic Shell" --warningyesnocancel \
 	"\n Do you want to play it ?"
 	y=$?
