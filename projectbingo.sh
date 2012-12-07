@@ -1,4 +1,6 @@
 #!/bin/bash
+#!/bin/awk
+#!/bin/perl
 txtrst=$(tput sgr0) # Text reset
 txtred=$(tput setaf 1) # Red
 txtgrn=$(tput setaf 2) # Green
@@ -79,7 +81,7 @@ esac
 }
 clear
 kdialog --title "BINGO SHELL" --msgbox "Welcome to the amazing world of BINGO Interactive GUI shell \n " 
-kdialog --title "BINGO SHELL" --warningyesnocancel " \n Do you want to login ?"
+kdialog --title "BINGO SHELL" --warningyesnocancel " \n Do you want to login or Register?"
 i=$?
 clear
 f=0
@@ -88,14 +90,50 @@ case $i in
 clear
 t()
 {
+echo -e "${txtred}${bold}Enter your choice${txtrst}"
+awk '{ print  $1" : "$2" "$6 }'  login
+echo -e "\n${txtylw}${bold}If you don't have an account Press -1 ${txtrst}"
+read choice
+if [ "$choice" == "-1" ]
+then
+clear
+echo "${bold}${txtred}Enter your Details${txtrst}"
+echo "${txtylw}${bold}Enter your first name${txtrst}"
+read fname
+echo "${txtylw}${bold}Enter your last name${txtrst}"
+read lname
+echo "${txtylw}${bold}Enter your password (preferably alphabetical)${txtrst}"
+read pass
+echo "${txtylw}${bold}Enter your sex(m/f)${txtrst}"
+read sex
+echo "${txtylw}${bold}Enter your email id${txtrst}"
+read mail
+lineno=`wc -l<login`
+lineno=$((lineno+1))
+echo "$lineno $fname $pass $sex $mail $lname">>login
+echo -e "\n\n${txtblu}${bold}Going back to starting of Bingo Shell and saving all the changes${txtrst}"
+$sleep
+$sleep
+clear
+t
+fi
+lineno=`wc -l<login`
+if [ $choice -gt  $lineno ]
+then
+echo "${txtgrn}${bold}Invalid choice${txtrst}"
+t
+fi
+moit=`grep $choice login|cut -d " " -f 3`
+l=`grep $choice login|cut -d " " -f 2`
+echo $moit
 password=`kdialog --password "Enter the password"`
 clear
-if [ "$password" -eq "12345" ]
+if [ "$password" == $moit ]
 then
 kdialog --msgbox "Password correct.\n Going to shell"
 echo "Password correct : Going to Bingo Shell "|festival --tts
 clear
-answer="Tushar Makkar"
+answer=$l
 f=0
 else
 clear
@@ -107,7 +145,6 @@ clear
 fi
 }
 t;;
-
 *)
 clear
 kdialog --title "Input dialog" --inputbox "What name would you like to
@@ -120,7 +157,6 @@ if [ "$f" -eq "1" ]
 then
 answer="`cat answer`"
 fi
-
 ssil()
 {
 clear
