@@ -77,7 +77,6 @@ exit;;
 2)start;;
 esac
 }
-
 clear
 kdialog --title "BINGO SHELL" --msgbox "Welcome to the amazing world of BINGO Interactive GUI shell \n " 
 kdialog --title "BINGO SHELL" --warningyesnocancel " \n Do you want to login ?"
