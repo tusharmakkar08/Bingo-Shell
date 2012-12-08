@@ -125,7 +125,6 @@ t
 fi
 moit=`grep $choice login|cut -d " " -f 3`
 l=`grep $choice login|cut -d " " -f 2`
-echo $moit
 password=`kdialog --password "Enter the password"`
 clear
 if [ "$password" == $moit ]
@@ -256,7 +255,8 @@ echo " 6--- Help regarding commands"
 echo " 7--- To know about the weather in your area "
 echo " 8--- For opening simple terminal "
 echo " 9--- For listening to awesome music "
-echo " 10--- Exit "
+echo " 10--- For chatting with your friends "
+echo " 11--- Exit "
 echo -e "\n\n${txtylw}${bold} Write bingo to  See what other users have to say about this product\n ${txtrst}"
 read a
 case $a in
@@ -877,7 +877,52 @@ $sleep
 $sleep
 clear
 start;;
-10)exi
+10)chat()
+{
+clear
+ echo  "${txtgrn}   ${bold}   ${back}       ${undl}Welcome to Bingo Shell Chat Page  !!!${exundl}     ${txtrst}"
+        echo -e "${txtred}\t${bold}       Now  Stay connected with your friends ${txtrst}"
+	echo "Welcome to Bingo Shell Chat Page"|festival --tts
+        echo "${txtred} ${rev} ${bold} Enter your choice ${txtrst} "
+        echo "${txtcyn}${bold}1--- Broadcast your chat " 
+        echo "${txtcyn}2--- Write to a specific person logged in the server "
+        echo "${txtcyn}3--- Use Centerim " 
+	 echo "${txtcyn}4--- Go back to the main menu "
+	 echo "${txtcyn}5--- Exit  ${txtrst}"
+	read ch
+	case $ch in
+	1)
+			clear
+			echo "${txtylw}${rev}Write your message here${txtrst}"
+			cat > wal
+			wall < wal
+			chat;;
+	2) 
+			clear
+			echo "${txtylw}${rev}Write username of the reciever here${txtrst}"
+			read user
+			write $user
+			chat;;
+	3) 
+		clear
+		centericq
+		chat;;
+	4)
+		start;;
+	5)
+		exi;;
+	*)
+	clear
+	echo "${txtred}${bold}Invalid Choice${txtrst}"
+		$sleep
+		$sleep
+		$sleep
+		chat;;
+		esac
+}
+chat
+;;
+11)exi
 ;;
 *) clear
 echo "${txtred}${bold}Please Enter Correct option${txtrst}"
