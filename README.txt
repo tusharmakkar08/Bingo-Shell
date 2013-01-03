@@ -15,12 +15,15 @@ What does BINGO SHELL do ?
 5- Automatic E-mail sending Protocol
 6- Music player integrated
 7- Text to speech synthesizer integrated features. 
-
+8- Chatting feature added through Centerim
+9- Chatting and Broadcasting feature added for Bingo Shell users
+10- Login Names and Registration form added 
+11- Database Management feature included
 
 For installing Project BINGO SHELL do as follows :
 
 
-1- sudo apt-get install mplayer kdebase-bin ssmtp weather-util festival
+1- sudo apt-get install mplayer kdebase-bin ssmtp weather-util festival centerim
 2- Change mplayer.conf in /etc/mplayer by writing xy=10
 3- Change ssmtp.config in /etc/ssmtp by writing following :
 	root=teambingoshell@gmail.com
