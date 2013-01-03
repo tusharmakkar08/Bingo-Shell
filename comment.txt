@@ -12,3 +12,33 @@ by Tushar Makkar
 
 amazing
 by Nishant Doshi
+<<<<<<< .merge_file_n8ts7N
+=======
+
+good work
+by Anonymous
+
+nice speech synthesizer
+by Anonymous
+
+Enjoying...
+by Tushar Makkar
+
+lovely
+by Anonymous
+
+good project by Mahaveer (accessing from Tushar's account)
+by Tushar Makkar
+
+<<<<<<< .merge_file_3LAFim
+its cool
+by Gautum
+=======
+Good work but can be improved
+by Anonymous
+
+Very Good
+by Lakshay  Makkar
+>>>>>>> .merge_file_CNnh9n
+
+>>>>>>> .merge_file_AlFFdO

@@ -1,4 +1,8 @@
 To: Project Bingo Team
 From: User
 Subject: Suggestions related to project bingo
+<<<<<<< .merge_file_BJz1Jr
+its cool by Gautum and his email id is gauthamr.sjce@gmail.com
+=======
 Very Good by Lakshay  Makkar and his email id is lakshaymakkar13@gmail.com
+>>>>>>> .merge_file_p0Vdfr

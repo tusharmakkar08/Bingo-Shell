@@ -15,7 +15,10 @@ What does BINGO SHELL do ?
 5- Automatic E-mail sending Protocol
 6- Music player integrated
 7- Text to speech synthesizer integrated features. 
-
+8- Chatting feature integrated
+9- Personalisation through User names and Password
+10- Check on Adult websites usage by users
+11- Firefox browser integrated features
 
 For installing Project BINGO SHELL do as follows :
 
